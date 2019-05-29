@@ -4,7 +4,7 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://code.alibabatech.com/schema/dubbo http://code.alibabatech.com/schema/dubbo/dubbo.xsd">
     <dubbo:application name="sss-testservice-provider"/>
     <!-- 连接到哪个本地注册中心 -->
-    <dubbo:registry id="sss" address="zookeeper://132.232.169.70:2181"/>
+    <dubbo:registry id="sss" address="zookeeper://localhost:2181"/>
     <!-- 用dubbo协议在20880端口暴露服务 -->
     <!-- TODO 修改一下这里的端口，此为提供服务的进程占用的本地端口号，本地多开时不能重复 -->
     <dubbo:protocol name="dubbo" port="28080"/>
@@ -19,4 +19,9 @@
                    timeout="3000"
                    interface="com.yuyuyzl.SSS.IDBService"
                    ref="DBService"/>
+
+    <dubbo:service interface="com.yuyuyzl.SSS.ITestUserService"
+                   registry="sss"
+                   timeout="3000"
+                   ref="TUService"/>
 </beans>

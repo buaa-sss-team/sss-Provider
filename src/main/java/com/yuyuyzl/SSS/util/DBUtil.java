@@ -11,7 +11,6 @@ public class DBUtil {
 
     public static final String URL="jdbc:mysql://132.232.169.70/sss-team?useSSL=false" + "?autoReconnect=true&useUnicode=true&useSSL=false"
             + "&characterEncoding=utf-8&serverTimezone=UTC";
-    ;
     public static final String USER="root";
     public static final String PASSWORD="8280508";
     private static Connection conn=null;

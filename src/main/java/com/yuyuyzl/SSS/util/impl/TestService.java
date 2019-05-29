@@ -1,4 +1,4 @@
-package com.yuyuyzl.SSS.impl;
+package com.yuyuyzl.SSS.util.impl;
 
 import com.yuyuyzl.SSS.ITestService;
 import com.yuyuyzl.SSS.MyReturnClass;
@@ -14,9 +14,9 @@ import java.util.Map;
 //TODO 修改这里的标注为实际服务REF，与spring-provider.xml中的ref相同
 @Service("TestService")
 //TODO 修改类名和接口引用为合适的类名
-public class TestServiceImpl implements ITestService {
+public class TestService implements ITestService {
 
-    private Logger logger = LoggerFactory.getLogger(TestServiceImpl.class);
+    private Logger logger = LoggerFactory.getLogger(com.yuyuyzl.SSS.util.impl.TestService.class);
 
     //TODO 你的接口实现↓
     public boolean login(String username, String password) {

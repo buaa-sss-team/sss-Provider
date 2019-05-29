@@ -1,7 +1,6 @@
 package com.yuyuyzl.SSS;
 
 
-import com.yuyuyzl.SSS.impl.TestServiceImpl;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
@@ -24,7 +23,7 @@ public class TestServiceTest {
 
     @Before
     public void init(){
-        testService=new TestServiceImpl();
+        testService=new com.yuyuyzl.SSS.util.impl.TestService();
     }
 
     /***
