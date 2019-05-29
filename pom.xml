@@ -18,6 +18,8 @@
         <jstlVersion>1.2</jstlVersion>
         <dbcpVersion>1.4</dbcpVersion>
         <mysqlVersion>5.1.9</mysqlVersion>
+        <dubboVersion>2.6.1</dubboVersion>
+        <zooVersion>3.4.11</zooVersion>
     </properties>
     <!-- **************************** /Properties 配置 **************************** -->
     <!-- TODO 在此处添加你需要的引用，如果可以的话尽量全部使用Maven管理lib -->
@@ -25,7 +27,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>dubbo</artifactId>
-            <version>2.6.1</version>
+            <version>${dubboVersion}</version>
         </dependency>
 
         <dependency>
@@ -37,7 +39,7 @@
         <dependency>
             <groupId>org.apache.zookeeper</groupId>
             <artifactId>zookeeper</artifactId>
-            <version>3.4.11</version>
+            <version>${zooVersion}</version>
         </dependency>
 
         <dependency>
@@ -122,7 +124,7 @@
         <dependency>
             <groupId>com.alibaba</groupId>
             <artifactId>dubbo</artifactId>
-            <version>2.5.3</version>
+            <version>${dubboVersion}</version>
             <exclusions>
                 <exclusion>
                     <groupId>org.springframework</groupId>
@@ -133,7 +135,7 @@
         <dependency>
             <groupId>org.apache.zookeeper</groupId>
             <artifactId>zookeeper</artifactId>
-            <version>3.3.3</version>
+            <version>${zooVersion}</version>
             <exclusions>
                 <exclusion>
                     <groupId>com.sun.jmx</groupId>
