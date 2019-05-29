@@ -1,4 +1,4 @@
-package com.yuyuyzl.SSS.dao.impl;
+package com.yuyuyzl.SSS.dao;
 
 import com.yuyuyzl.SSS.ITestUserDao;
 import com.yuyuyzl.SSS.models.TestUser;
