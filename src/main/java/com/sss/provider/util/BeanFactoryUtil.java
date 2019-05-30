@@ -1,4 +1,4 @@
-package com.yuyuyzl.SSS.util;
+package com.sss.provider.util;
 
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;

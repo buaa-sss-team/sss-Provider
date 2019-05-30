@@ -1,7 +1,7 @@
-package com.yuyuyzl.SSS.util.impl;
-import com.yuyuyzl.SSS.IDBService;
-import com.yuyuyzl.SSS.models.*;
-import com.yuyuyzl.SSS.util.DBUtil;
+package com.sss.provider.util.impl;
+import com.sss.interfaces.IDBService;
+import com.sss.interfaces.model.*;
+import com.sss.provider.util.DBUtil;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -10,7 +10,7 @@ import java.sql.*;
 
 @Service("DBService")
 public class DBService implements IDBService {
-    private Logger logger = LoggerFactory.getLogger(com.yuyuyzl.SSS.util.impl.DBService.class);
+    private Logger logger = LoggerFactory.getLogger(DBService.class);
 
     //添加用户
     public Boolean addUser(user x) {

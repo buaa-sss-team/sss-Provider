@@ -1,7 +1,7 @@
-package com.yuyuyzl.SSS.dao;
+package com.sss.provider.dao;
 
-import com.yuyuyzl.SSS.ITestUserDao;
-import com.yuyuyzl.SSS.models.TestUser;
+import com.sss.interfaces.ITestUserDao;
+import com.sss.interfaces.model.TestUser;
 import org.hibernate.Query;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;

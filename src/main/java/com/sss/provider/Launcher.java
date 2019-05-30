@@ -1,6 +1,6 @@
-package com.yuyuyzl.SSS;
+package com.sss.provider;
 
-import com.yuyuyzl.SSS.util.BeanFactoryUtil;
+import com.sss.provider.util.BeanFactoryUtil;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
 

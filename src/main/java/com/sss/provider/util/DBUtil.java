@@ -1,4 +1,4 @@
-package com.yuyuyzl.SSS.util;
+package com.sss.provider.util;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
