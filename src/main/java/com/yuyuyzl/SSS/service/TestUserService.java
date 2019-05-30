@@ -10,7 +10,8 @@ import org.springframework.transaction.annotation.Transactional;
 import java.util.List;
 
 //@Service 把当前类在spring中注册为一个服务组件，spring实例化对象时可以根据配置执行依赖注入
-@Service
+//@com.alibaba.dubbo.config.annotation.Service
+@Service("TestUserService")
 @Transactional
 public class TestUserService implements ITestUserService {
 
