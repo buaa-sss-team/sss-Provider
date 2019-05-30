@@ -12,15 +12,15 @@
     <!-- TODO 修改这里的interface和ref属性为你的服务暴露的接口的类名和引用名称 -->
     <dubbo:service registry="sss"
                    timeout="3000"
-                   interface="com.yuyuyzl.SSS.ITestService"
+                   interface="com.sss.interfaces.ITestService"
                    ref="TestService"/>
 
     <dubbo:service registry="sss"
                    timeout="3000"
-                   interface="com.yuyuyzl.SSS.IDBService"
+                   interface="com.sss.interfaces.IDBService"
                    ref="DBService"/>
 
-    <dubbo:service interface="com.yuyuyzl.SSS.ITestUserService"
+    <dubbo:service interface="com.sss.interfaces.ITestUserService"
                    registry="sss"
                    timeout="3000"
                    ref="TestUserService"/>

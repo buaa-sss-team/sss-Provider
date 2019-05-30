@@ -1,7 +1,7 @@
-package com.yuyuyzl.SSS.util.impl;
+package com.sss.provider.util.impl;
 
-import com.yuyuyzl.SSS.ITestService;
-import com.yuyuyzl.SSS.MyReturnClass;
+import com.sss.interfaces.ITestService;
+import com.sss.interfaces.MyReturnClass;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
@@ -16,7 +16,7 @@ import java.util.Map;
 //TODO 修改类名和接口引用为合适的类名
 public class TestService implements ITestService {
 
-    private Logger logger = LoggerFactory.getLogger(com.yuyuyzl.SSS.util.impl.TestService.class);
+    private Logger logger = LoggerFactory.getLogger(TestService.class);
 
     //TODO 你的接口实现↓
     public boolean login(String username, String password) {

@@ -1,8 +1,8 @@
-package com.yuyuyzl.SSS.service;
+package com.sss.provider.service;
 
-import com.yuyuyzl.SSS.ITestUserDao;
-import com.yuyuyzl.SSS.models.TestUser;
-import com.yuyuyzl.SSS.ITestUserService;
+import com.sss.interfaces.ITestUserDao;
+import com.sss.interfaces.model.TestUser;
+import com.sss.interfaces.ITestUserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;

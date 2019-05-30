@@ -9,6 +9,6 @@
 
     <!-- DB schema will be updated if needed -->
     <!-- <property name="hbm2ddl.auto">update</property> -->
-    <mapping class="com.yuyuyzl.SSS.models.TestUser"></mapping>
+    <mapping class="com.sss.interfaces.model.TestUser"></mapping>
   </session-factory>
 </hibernate-configuration>
