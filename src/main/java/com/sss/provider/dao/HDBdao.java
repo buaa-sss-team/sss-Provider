@@ -3,19 +3,20 @@ import com.sss.interfaces.dao.IHDBdao;
 
 import com.sss.interfaces.hmodel.User;
 import org.aspectj.lang.annotation.Before;
+import org.hibernate.Query;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.Transaction;
 import org.hibernate.SessionFactory;
 import org.hibernate.Session;
 import org.springframework.stereotype.Service;
+import java.util.List;
 
 @Service("HDBdao")
 public class HDBdao implements IHDBdao{
     private static Configuration config=null;
     private static SessionFactory sessionFactory=null;
 
-    //初始化 其中sessionFactory花销大
-    public void init(){
+    HDBdao(){
         config=new Configuration().configure();
         sessionFactory=config.buildSessionFactory();
     }
@@ -24,7 +25,7 @@ public class HDBdao implements IHDBdao{
         Session session=sessionFactory.getCurrentSession();
         Transaction tx=session.beginTransaction();
         try {
-            session.save(who);
+            session.saveOrUpdate(who);
             tx.commit();
         }
         catch(Exception e){
@@ -75,6 +76,9 @@ public class HDBdao implements IHDBdao{
             return ret;
         }
     }
+
+
+
     //删除该ID的User
     public void deleteUserByID(int ID){
         Session session=sessionFactory.getCurrentSession();
@@ -92,6 +96,28 @@ public class HDBdao implements IHDBdao{
         finally {
             if(session!=null&&session.isOpen())
                 session.close();
+        }
+    }
+
+    public List<User> getUserByName(String name){
+        Session session=sessionFactory.getCurrentSession();
+        Transaction tx=session.beginTransaction();
+        List<User> ret=null;
+        try {
+            Query query=session.createQuery("FROM User WHERE name=?");
+            ((Query) query).setParameter(0,name);
+            ret=query.list();
+            tx.commit();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            if(tx != null && tx.isActive())
+                tx.rollback();
+        }
+        finally {
+            if(session!=null&&session.isOpen())
+                session.close();
+            return ret;
         }
     }
 
