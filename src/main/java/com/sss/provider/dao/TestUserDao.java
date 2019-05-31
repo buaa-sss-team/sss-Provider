@@ -25,7 +25,7 @@ public class TestUserDao implements ITestUserDao {
     }
 
     public List<TestUser> getAllUser(){
-        String hql = "from testuser";
+        String hql = "from TestUser";
         Query query = sessionFactory.getCurrentSession().createQuery(hql);
         return query.list();
     }
