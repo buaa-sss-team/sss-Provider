@@ -4,11 +4,27 @@
     "http://www.hibernate.org/dtd/hibernate-configuration-3.0.dtd">
 <hibernate-configuration>
   <session-factory>
-    <!-- <property name="connection.username"/> -->
-    <!-- <property name="connection.password"/> -->
+    <!-- 1.数据库连接配置 -->
+    <property name="hibernate.connection.driver_class">com.mysql.jdbc.Driver</property>
+    <property name="hibernate.connection.url">jdbc:mysql://132.232.169.70:3306/sss-team</property>
+    <property name="hibernate.connection.username">root</property>
+    <property name="hibernate.connection.password">8280508</property>
+    <!--  数据库的方言 -->
+    <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+    <!-- 2.其他相关配置 -->
+    <property name="hibernate.current_session_context_class">org.hibernate.context.ThreadLocalSessionContext</property>
+    <!-- 2.1 显示hibernate在运行时候执行的sql语句 -->
 
-    <!-- DB schema will be updated if needed -->
-    <!-- <property name="hbm2ddl.auto">update</property> -->
+    <property name="hibernate.show_sql">true</property>
+    <!-- 2.2 格式化sql -->
+    <property name="hibernate.format_sql">true</property>
+    <!-- 2.3 自动建表 -->
+    <property name="hibernate.hbm2ddl.auto">create</property>
+
+    <!--3. 加载所有映射 -->
     <mapping class="com.sss.interfaces.model.TestUser"></mapping>
+    <mapping class="com.sss.interfaces.hmodel.User"></mapping>
+
+
   </session-factory>
 </hibernate-configuration>

@@ -33,5 +33,10 @@
                    timeout="3000"
                    ref="TestUserService"/>
 
-    <dubbo:annotation package="com.yuyuyzl.SSS"/>
+    <dubbo:service interface="com.sss.interfaces.dao.IHDBdao"
+                   registry="sss"
+                   timeout="3000"
+                   ref="HDBdao"/>
+
+    <dubbo:annotation package="com.sss.provider"/>
 </beans>
