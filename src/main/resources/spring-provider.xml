@@ -10,6 +10,14 @@
     <dubbo:protocol name="dubbo" port="28080"/>
     <!-- 声明需要暴露的服务接口 -->
     <!-- TODO 修改这里的interface和ref属性为你的服务暴露的接口的类名和引用名称 -->
+    <!--Provider	配置可 以作为	Consumer 的缺省值	。否则，Consumer 会使用 Consumer 端的全局设置-->
+    <!--因此建议在provider端配置consumer端的配置：-->
+    <!--timeout 方法调用超时-->
+    <!--retries 失败重试次数，默认是2-->
+    <!--loadbalance 负载均衡算法，缺省是随机 random，可以使轮询 roundrobin-->
+    <!--在provider端配置provider的属性：-->
+    <!--dubbo:protocol threads 服务线程池大小-->
+    <!--executes 一个服务提供者并行执行请求上限-->
     <dubbo:service registry="sss"
                    timeout="3000"
                    interface="com.sss.interfaces.ITestService"
