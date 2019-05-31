@@ -23,7 +23,23 @@
 
     <!--3. 加载所有映射 -->
     <mapping class="com.sss.interfaces.model.TestUser"></mapping>
-    <mapping class="com.sss.interfaces.hmodel.User"></mapping>
+
+
+    <mapping class="com.sss.interfaces.hmodel.User"/>
+    <mapping class="com.sss.interfaces.hmodel.Logs"/>
+    <mapping class="com.sss.interfaces.hmodel.Administrator"/>
+    <mapping class="com.sss.interfaces.hmodel.Auditapplication"/>
+    <mapping class="com.sss.interfaces.hmodel.BoughtScientificRes"/>
+    <mapping class="com.sss.interfaces.hmodel.BuyRes"/>
+    <mapping class="com.sss.interfaces.hmodel.Expert"/>
+    <mapping class="com.sss.interfaces.hmodel.Message"/>
+    <mapping class="com.sss.interfaces.hmodel.ModifySciRes"/>
+    <mapping class="com.sss.interfaces.hmodel.Paper"/>
+    <mapping class="com.sss.interfaces.hmodel.Patent"/>
+    <mapping class="com.sss.interfaces.hmodel.Payment"/>
+    <mapping class="com.sss.interfaces.hmodel.ScientificRes"/>
+    <mapping class="com.sss.interfaces.hmodel.SettleIn"/>
+    <mapping class="com.sss.interfaces.hmodel.Transaction"/>
 
 
   </session-factory>
