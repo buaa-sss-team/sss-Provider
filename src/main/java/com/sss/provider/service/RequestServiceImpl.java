@@ -6,8 +6,14 @@ import com.sss.interfaces.hmodel.Payment;
 import com.sss.interfaces.hmodel.SettleIn;
 import com.sss.interfaces.service.RequestService;
 import com.sss.provider.dao.HDBdao;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 
+@Service("RequestService")
+@Transactional
 public class RequestServiceImpl implements RequestService {
+    @Autowired
     private HDBdao hdBdao;
     public void reqForExpert(SettleIn settleIn) {
         hdBdao.insert(settleIn);
