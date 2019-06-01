@@ -20,50 +20,75 @@ public class HDBdao implements IHDBdao{
         config=new Configuration().configure();
         sessionFactory=config.buildSessionFactory();
     }
-    //插入User
-    public void insertUser(User who){
+    /*
+        通用插入
+        返回0 插入成功
+        返回1 插入失败
+     */
+    public int insert(Object obj){
         Session session=sessionFactory.getCurrentSession();
         Transaction tx=session.beginTransaction();
+        int ret=0;
         try {
-            session.saveOrUpdate(who);
+            session.saveOrUpdate(obj);
             tx.commit();
         }
         catch(Exception e){
+            ret=1;
             e.printStackTrace();
             if(tx != null && tx.isActive())
                 tx.rollback();
         }
-        finally {
-            if(session!=null&&session.isOpen())
-                session.close();
-        }
+        return ret;
     }
-    //更新User
-    public void updateUser(User who){
+    /*
+        通用更新
+        返回0 更新成功
+        返回1 更新失败
+     */
+    public int update(Object obj){
         Session session=sessionFactory.getCurrentSession();
         Transaction tx=session.beginTransaction();
+        int ret=0;
         try {
-            session.update(who);
+            session.update(obj);
             tx.commit();
         }
         catch(Exception e){
+            ret=1;
             e.printStackTrace();
             if(tx != null && tx.isActive())
                 tx.rollback();
         }
-        finally {
-            if(session!=null&&session.isOpen())
-                session.close();
-        }
+        return ret;
     }
-    //返回该id的User
-    public User getUserByID(int id){
+    /*
+            通用删除
+            返回0 删除成功
+            返回1 删除失败
+    */
+    public int delete(Object obj){
         Session session=sessionFactory.getCurrentSession();
         Transaction tx=session.beginTransaction();
-        User ret=null;
+        int ret=0;
         try {
-            ret = (User) session.get(User.class, id);
+            session.delete(obj);
             tx.commit();
+        }
+        catch(Exception e){
+            ret=1;
+            e.printStackTrace();
+            if(tx != null && tx.isActive())
+                tx.rollback();
+        }
+        return ret;
+    }
+    public Object getByID(Class cls,int id){
+        Session session=sessionFactory.openSession();
+        Transaction tx=session.beginTransaction();
+        Object ret=null;
+        try{
+            ret=session.get(cls,id);
         }
         catch(Exception e){
             e.printStackTrace();
@@ -71,36 +96,13 @@ public class HDBdao implements IHDBdao{
                 tx.rollback();
         }
         finally {
-            if(session!=null&&session.isOpen())
-                session.close();
+            session.close();
             return ret;
         }
     }
 
-
-
-    //删除该ID的User
-    public void deleteUserByID(int ID){
-        Session session=sessionFactory.getCurrentSession();
-        Transaction tx=session.beginTransaction();
-        User who=(User)session.get(User.class,new Integer(ID));
-        try{
-            session.delete(who);
-            tx.commit();
-        }
-        catch(Exception e){
-            e.printStackTrace();
-            if(tx != null && tx.isActive())
-                tx.rollback();
-        }
-        finally {
-            if(session!=null&&session.isOpen())
-                session.close();
-        }
-    }
-
     public List<User> getUserByName(String name){
-        Session session=sessionFactory.getCurrentSession();
+        Session session=sessionFactory.openSession();
         Transaction tx=session.beginTransaction();
         List<User> ret=null;
         try {
@@ -115,8 +117,7 @@ public class HDBdao implements IHDBdao{
                 tx.rollback();
         }
         finally {
-            if(session!=null&&session.isOpen())
-                session.close();
+            session.close();
             return ret;
         }
     }
