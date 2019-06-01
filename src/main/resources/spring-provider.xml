@@ -38,5 +38,11 @@
                    timeout="3000"
                    ref="HDBdao"/>
 
+    <dubbo:service interface="com.sss.interfaces.service.FileService"
+                   ref="FileService"/>
+
+    <dubbo:service interface="com.sss.interfaces.service.RequestService"
+                   ref="RequestService"/>
+
     <dubbo:annotation package="com.sss.provider"/>
 </beans>
