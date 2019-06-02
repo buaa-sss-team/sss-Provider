@@ -38,6 +38,11 @@
                    timeout="3000"
                    ref="HDBdao"/>
 
+    <dubbo:service interface="com.sss.interfaces.IESService"
+                     registry="sss"
+                     timeout="3000"
+                     ref="ESService"/>
+
     <dubbo:service interface="com.sss.interfaces.service.FileService"
                    ref="FileService"/>
 
