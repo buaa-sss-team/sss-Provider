@@ -45,7 +45,7 @@
                    ref="RequestService"/>
 
     <dubbo:service interface="com.sss.interfaces.service.AuthorizationService"
-                   ref="Authorization"/>
+                   ref="AuthorizationService"/>
 
     <dubbo:service interface="com.sss.interfaces.service.CheckService"
                    ref="CheckService"/>
