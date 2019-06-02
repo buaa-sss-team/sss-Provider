@@ -122,7 +122,6 @@ public class HDBdao implements IHDBdao{
         }
         finally {
             session.close();
-            System.out.println("ret!!!!!!!!!!!!!!!!!!!!!!!!"+ret);
             return ret;
         }
     }

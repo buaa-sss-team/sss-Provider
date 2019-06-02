@@ -195,7 +195,34 @@
             <artifactId>mysql-connector-java</artifactId>
             <version>${mysqlVersion}</version>
         </dependency>
+
+        <!-- **************************** ehcache 依赖 **************************** -->
+
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-ehcache</artifactId>
+            <version>3.6.10.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>hsqldb</groupId>
+            <artifactId>hsqldb</artifactId>
+            <version>1.8.0.4</version>
+        </dependency>
+        <dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-testing</artifactId>
+            <version>3.6.10.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>net.sf.ehcache</groupId>
+            <artifactId>ehcache-core</artifactId>
+            <version>2.4.3</version>
+        </dependency>
+
+
+        <!-- **************************** ehcache 依赖 **************************** -->
         <!-- **************************** hibernate 依赖 **************************** -->
+
         <!-- **************************** interface 依赖 **************************** -->
         <dependency>
             <groupId>com.sss.interfaces</groupId>
