@@ -1,5 +1,8 @@
 package com.sss.provider.service;
 
+import com.sss.interfaces.hmodel.Buyres;
+import com.sss.interfaces.hmodel.Payment;
+import com.sss.interfaces.hmodel.Tobeexpert;
 import com.sss.interfaces.service.RequestService;
 import com.sss.provider.dao.HDBdao;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,19 +15,22 @@ public class RequestServiceImpl implements RequestService {
     @Autowired
     private HDBdao hdBdao;
 
-    public void reqForExpert(SettleIn settleIn) {
-        hdBdao.insert(settleIn);
+    public int reqForExpert(Tobeexpert tobeexpert) {
+        if (hdBdao.insert(tobeexpert) == 1)
+            return 1;
+        else return 0;
     }
 
-    public void reqForWithdraw(Payment payment) {
-        hdBdao.insert(payment);
+    public int reqForWithdraw(Payment payment) {
+        if (hdBdao.insert(payment)==1)
+            return 1;
+        else return 0;
     }
 
-    public void buyResource(BuyRes buyRes) {
-        hdBdao.insert(buyRes);
+    public int buyResource(Buyres buyRes) {
+        if (hdBdao.insert(buyRes)==1)
+            return 1;
+        else return 0;
     }
 
-    public void modifyResource(ModifySciRes modifySciRes) {
-        hdBdao.update(modifySciRes);
-    }
 }

@@ -1,31 +1,32 @@
 package com.sss.provider.service;
 
-import com.sss.interfaces.service.Authorization;
+import com.sss.interfaces.hmodel.User;
+import com.sss.interfaces.service.AuthorizationService;
 import com.sss.provider.dao.HDBdao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.List;
-
 @Service("Authorization")
 @Transactional
-public class AuthorizationImpl implements Authorization {
+public class AuthorizationServiceImpl implements AuthorizationService {
     @Autowired
     private HDBdao hdBdao;
 
     public int userLogin(String name, String pwd) {
-        List<User> list = hdBdao.getUserByName(name);
-        if (list.isEmpty())
+        User user = hdBdao.getUserByName(name);
+        if (user == null)
             return 1;
-        User user = list.get(0);
         if (!user.getPassword().equals(pwd))
             return 1;
         return 0;
     }
 
     public int userSignIn(User user) {
-        hdBdao.insert(user);
+        if (user == null)
+            return 1;
+        else
+            hdBdao.insert(user);
         return 0;
     }
 }

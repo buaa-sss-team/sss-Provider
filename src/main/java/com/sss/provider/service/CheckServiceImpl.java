@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import javax.print.attribute.HashDocAttributeSet;
 import java.util.List;
 
 @Service("CheckService")
@@ -14,27 +15,12 @@ import java.util.List;
 public class CheckServiceImpl implements CheckService {
     @Autowired
     private HDBdao hdBdao;
-    public List<SettleIn> checkSettleIn() {
-
-        return null;
+    public List<Tobeexpert> checkTobeexpert(int status) {
+        return hdBdao.getTobeexpertBystatus(status);
     }
 
-    public List<Payment> checkPayment() {
-
-        return null;
+    public List<Buyres> checkBuyRes(int status) {
+        return hdBdao.getBuyresBystatus(status);
     }
 
-    public List<BuyRes> checkBuyRes() {
-
-        return null;
-    }
-
-    public List<ModifySciRes> checkModifyRes() {
-
-        return null;
-    }
-
-    public List<Auditapplication> checkAudApp(int status){
-        return hdBdao.getAuditByStatus(status);
-    }
 }

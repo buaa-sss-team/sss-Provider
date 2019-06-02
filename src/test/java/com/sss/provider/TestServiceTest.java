@@ -1,12 +1,8 @@
 package com.sss.provider;
 
-import com.sss.interfaces.service.IAuthorization;
-import com.sss.provider.service.IAuthorizationImpl;
 import com.sss.provider.util.impl.TestService;
-import com.sss.provider.service.AuthorizationImpl;
+import com.sss.provider.service.AuthorizationServiceImpl;
 import com.sss.interfaces.ITestService;
-import com.sss.interfaces.MyReturnClass;
-import org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -27,15 +23,13 @@ import org.slf4j.LoggerFactory;
  */
 public class TestServiceTest {
     private ITestService testService;
-    private IAuthorization iAuthorization;
-    private AuthorizationImpl authorization;
+    private AuthorizationServiceImpl authorization;
     private Logger logger= LoggerFactory.getLogger(TestServiceTest.class);
 
     @Before
     public void init(){
         testService=new TestService();
-        iAuthorization=new IAuthorizationImpl();
-        authorization = new AuthorizationImpl();
+        authorization = new AuthorizationServiceImpl();
     }
 
     /***
