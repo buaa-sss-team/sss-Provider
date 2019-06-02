@@ -1,7 +1,5 @@
 package com.sss.provider.service;
 
-import com.sss.interfaces.IDBService;
-import com.sss.interfaces.hmodel.User;
 import com.sss.interfaces.service.Authorization;
 import com.sss.provider.dao.HDBdao;
 import org.springframework.beans.factory.annotation.Autowired;

@@ -43,8 +43,6 @@ public class TestServiceTest {
      */
     @Test
     public void testSignin(){
-        assertfa
-        logger.info(authorization.userSignIn("springPig", "xixixixi")+"");
     }
 
     @Test

@@ -1,21 +1,14 @@
 package com.sss.provider.service;
 
 import com.sss.interfaces.dao.IHDBdao;
-import com.sss.interfaces.hmodel.User;
-import com.sss.provider.dao.HDBdao;
-import com.sss.provider.util.impl.DBService;
-import com.sss.interfaces.model.user;
 import com.sss.interfaces.service.IAuthorization;
-import com.sss.provider.util.impl.TestService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
-import java.util.ArrayList;
 import java.util.List;
 
 @Service("IAuthorization")
