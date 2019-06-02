@@ -8,6 +8,8 @@ import org.hibernate.cfg.Configuration;
 import org.hibernate.Transaction;
 import org.hibernate.SessionFactory;
 import org.hibernate.Session;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import java.util.List;
 
@@ -15,7 +17,7 @@ import java.util.List;
 public class HDBdao implements IHDBdao{
     private static Configuration config=null;
     private static SessionFactory sessionFactory=null;
-
+    private Logger logger = LoggerFactory.getLogger(HDBdao.class);
     HDBdao(){
         config=new Configuration().configure();
         sessionFactory=config.buildSessionFactory();
@@ -102,12 +104,13 @@ public class HDBdao implements IHDBdao{
     }
 
     public List<User> getUserByName(String name){
-        Session session=sessionFactory.openSession();
-        Transaction tx=session.beginTransaction();
-        List<User> ret=null;
-        try {
-            Query query=session.createQuery("FROM User WHERE name=?");
-            ((Query) query).setParameter(0,name);
+        logger.info("intogetuserbyname");
+                Session session=sessionFactory.openSession();
+                Transaction tx=session.beginTransaction();
+                List<User> ret=null;
+                try {
+                    Query query=session.createQuery("FROM User WHERE name=?");
+                    ((Query) query).setParameter(0,name);
             ret=query.list();
             tx.commit();
         }
@@ -118,6 +121,7 @@ public class HDBdao implements IHDBdao{
         }
         finally {
             session.close();
+            System.out.println("ret!!!!!!!!!!!!!!!!!!!!!!!!"+ret);
             return ret;
         }
     }

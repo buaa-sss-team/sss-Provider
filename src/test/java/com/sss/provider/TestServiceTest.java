@@ -1,12 +1,16 @@
 package com.sss.provider;
 
 
+import com.sss.interfaces.service.IAuthorization;
+import com.sss.provider.service.IAuthorizationImpl;
 import com.sss.provider.util.impl.TestService;
 import com.sss.interfaces.ITestService;
 import com.sss.interfaces.MyReturnClass;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 //TODO 在这里编写并完善你自己实现的类的单元测试
 
@@ -23,29 +27,33 @@ import org.junit.Test;
  */
 public class TestServiceTest {
     private ITestService testService;
+    private IAuthorization iAuthorization;
+    private Logger logger= LoggerFactory.getLogger(TestServiceTest.class);
 
     @Before
     public void init(){
         testService=new TestService();
+        iAuthorization=new IAuthorizationImpl();
     }
 
     /***
      * 尽量覆盖所有代码和条件分支
      */
     @Test
+    public void testSignin(){
+        logger.info(iAuthorization.userSignIn("springPig", "xixixixi")+"");
+    }
+
+
+    @Test
     public void testLogin(){
-        Assert.assertTrue(testService.login("aaa", "aaa"));
-        Assert.assertFalse(testService.login("aaa", "bbb"));
-        Assert.assertFalse(testService.login(null, null));
+        logger.info(iAuthorization.userLogin("springPig", "mima")+"");
+        logger.info(iAuthorization.userLogin("springPig", "xixixixi")+"");
     }
 
     /***
      * 这个是凑数瞎写的不要学我
      */
-    @Test
-    public void testGetListMapTest(){
-        MyReturnClass ans=testService.getListMapTest();
-        Assert.assertEquals(ans.getLm().size(),3);
-    }
+
 
 }
