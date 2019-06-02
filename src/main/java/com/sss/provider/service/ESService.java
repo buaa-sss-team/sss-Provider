@@ -11,9 +11,11 @@ import java.util.Map;
 @Service("ESService")
 @Transactional
 public class ESService implements IESService {
-    public List<Map<String, Object>> FuzzyQueryAbstract(String info) {
+    public List<Map<String, Object>> FuzzyQueryAbstract(String name, String index,String info) {
         try {
-            return ESdao.search("query", "abstract", info, 0, 100);
+            // TODO: 这里现在只有paper一个表更新了, 剩下的都还没对接上, 之后会写
+            ESdao.setIndexName("indexres");
+            return ESdao.search("query", index, info, 0, 100);
         } catch (Exception e) {
             System.out.println("IO Exception happens" + e.getMessage());
             return null;
@@ -24,7 +26,7 @@ public class ESService implements IESService {
     public static void main(String []args) {
         // TODO: 修改查询代码, 现在的查询可能不对
         ESService testService = new ESService();
-        List<Map<String, Object>> res = testService.FuzzyQueryAbstract("test");
+        List<Map<String, Object>> res = testService.FuzzyQueryAbstract("indexres","abstract","test");
         if (res==null) {
             System.out.println("数据获取失败");
             return;
