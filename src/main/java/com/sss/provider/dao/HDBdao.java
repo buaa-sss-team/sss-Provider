@@ -1,7 +1,6 @@
 package com.sss.provider.dao;
 
 import com.sss.interfaces.dao.IHDBdao;
-
 import com.sss.interfaces.hmodel.Buyres;
 import com.sss.interfaces.hmodel.Payment;
 import com.sss.interfaces.hmodel.Tobeexpert;
