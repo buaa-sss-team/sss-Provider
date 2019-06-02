@@ -21,7 +21,7 @@ public class FileServiceImpl implements FileService {
     // 1为有错误，0为正常返回
     public int FileUpload(MultipartFile file) {
         if (!file.isEmpty()){
-            String storePath= "E:\\test";//存放我们上传的文件路径
+            String storePath= "D:\\test";//存放我们上传的文件路径
             String fileName = file.getOriginalFilename();
             java.io.File filepath = new java.io.File(storePath, fileName);
             if (!filepath.getParentFile().exists()) {

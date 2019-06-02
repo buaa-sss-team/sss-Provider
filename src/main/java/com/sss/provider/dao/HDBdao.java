@@ -1,6 +1,7 @@
 package com.sss.provider.dao;
 import com.sss.interfaces.dao.IHDBdao;
 
+import com.sss.interfaces.hmodel.Auditapplication;
 import com.sss.interfaces.hmodel.User;
 import org.aspectj.lang.annotation.Before;
 import org.hibernate.Query;
@@ -108,6 +109,27 @@ public class HDBdao implements IHDBdao{
         try {
             Query query=session.createQuery("FROM User WHERE name=?");
             ((Query) query).setParameter(0,name);
+            ret=query.list();
+            tx.commit();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            if(tx != null && tx.isActive())
+                tx.rollback();
+        }
+        finally {
+            session.close();
+            return ret;
+        }
+    }
+
+    public List<Auditapplication> getAuditByStatus(int st){
+        Session session=sessionFactory.openSession();
+        Transaction tx=session.beginTransaction();
+        List<Auditapplication> ret=null;
+        try {
+            Query query=session.createQuery("FROM Auditapplication WHERE status=?");
+            ((Query) query).setParameter(0,st);
             ret=query.list();
             tx.commit();
         }
