@@ -1,6 +1,10 @@
 package com.sss.provider.dao;
+
 import com.sss.interfaces.dao.IHDBdao;
 
+import com.sss.interfaces.hmodel.Buyres;
+import com.sss.interfaces.hmodel.Payment;
+import com.sss.interfaces.hmodel.Tobeexpert;
 import com.sss.interfaces.hmodel.User;
 import org.hibernate.Query;
 import org.hibernate.cfg.Configuration;
@@ -11,6 +15,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import java.util.List;
+
 
 @Service("HDBdao")
 public class HDBdao implements IHDBdao{
@@ -126,4 +131,43 @@ public class HDBdao implements IHDBdao{
     }
 
 
+    public List<Tobeexpert> getTobeexpertBystatus(int st){
+        Session session=sessionFactory.openSession();
+        Transaction tx=session.beginTransaction();
+        List<Tobeexpert> ret=null;
+        try{
+            Query query=session.createQuery("FROM Tobeexpert WHERE status=?");
+            query.setParameter(0,st);
+            ret=query.list();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            if(tx != null && tx.isActive())
+                tx.rollback();
+        }
+        finally {
+            session.close();
+            return ret;
+        }
+    }
+
+    public List<Buyres> getBuyresBystatus(int st){
+        Session session=sessionFactory.openSession();
+        Transaction tx=session.beginTransaction();
+        List<Buyres> ret=null;
+        try{
+            Query query=session.createQuery("FROM Buyres WHERE status=?");
+            query.setParameter(0,st);
+            ret=query.list();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            if(tx != null && tx.isActive())
+                tx.rollback();
+        }
+        finally {
+            session.close();
+            return ret;
+        }
+    }
 }
