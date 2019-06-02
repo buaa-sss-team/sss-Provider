@@ -9,10 +9,18 @@
     <property name="hibernate.connection.url">jdbc:mysql://132.232.169.70:3306/sss-team</property>
     <property name="hibernate.connection.username">root</property>
     <property name="hibernate.connection.password">8280508</property>
+
     <!--  数据库的方言 -->
     <property name="hibernate.dialect">org.hibernate.dialect.MySQL5Dialect</property>
+
+    <!-- 二级缓存配置 -->
+    <property name="hibernate.cache.use_second_level_cache">true</property>
+    <property name="hibernate.cache.provider_configuration_file_resource_path">ehcache.xml</property>
+    <property name="hibernate.cache.provider_class">net.sf.ehcache.hibernate.EhCacheProvider</property>
+
     <!-- 2.其他相关配置 -->
     <property name="hibernate.current_session_context_class">org.hibernate.context.ThreadLocalSessionContext</property>
+
     <!-- 2.1 显示hibernate在运行时候执行的sql语句 -->
 
     <property name="hibernate.show_sql">true</property>
@@ -21,10 +29,9 @@
     <!-- 2.3 自动建表 -->
     <property name="hibernate.hbm2ddl.auto">update</property>
 
+
     <!--3. 加载所有映射 -->
-    <mapping class="com.sss.interfaces.model.TestUser"></mapping>
-
-
+    <mapping class="com.sss.interfaces.model.TestUser"/>
     <mapping class="com.sss.interfaces.hmodel.User"/>
     <mapping class="com.sss.interfaces.hmodel.Logs"/>
     <mapping class="com.sss.interfaces.hmodel.Administrator"/>
@@ -41,6 +48,6 @@
     <mapping class="com.sss.interfaces.hmodel.SettleIn"/>
     <mapping class="com.sss.interfaces.hmodel.Transaction"/>
 
-
+    <class-cache class="com.sss.interfaces.hmodel.User" usage="read-only"/>
   </session-factory>
 </hibernate-configuration>

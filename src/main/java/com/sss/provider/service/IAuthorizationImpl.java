@@ -22,15 +22,15 @@ import java.util.List;
 @Transactional
 public class IAuthorizationImpl implements IAuthorization {
     /*@Autowired
-    private HDBdao hdbdao;*/
+        private HDBdao hdbdao;*/
 
-    private String msg;
-    private Logger logger = LoggerFactory.getLogger(IAuthorizationImpl.class);
+        private String msg;
+        private Logger logger = LoggerFactory.getLogger(IAuthorizationImpl.class);
 
-    public int userLogin(String name, String pwd) {
-        //加载hdbdao
-        ApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
-        IHDBdao hdbdao=ctx.getBean(IHDBdao.class);
+        public int userLogin(String name, String pwd) {
+            //加载hdbdao
+            ApplicationContext ctx = new ClassPathXmlApplicationContext("spring.xml");
+            IHDBdao hdbdao=ctx.getBean(IHDBdao.class);
         try{
                 List<User> userList=hdbdao.getUserByName(name);
                 logger.info("size"+userList.size());
