@@ -1,5 +1,8 @@
 package com.sss.provider;
 
+import com.sss.interfaces.model.TestUser;
+import com.sss.provider.dao.HDBdao;
+import com.sss.provider.service.TestUserService;
 import com.sss.provider.util.BeanFactoryUtil;
 import org.apache.commons.logging.Log;
 import org.apache.commons.logging.LogFactory;
@@ -27,6 +30,7 @@ public class Launcher {
         } catch (Exception e) {
             e.printStackTrace();
         }
+        System.out.println();
     }
 
     /**

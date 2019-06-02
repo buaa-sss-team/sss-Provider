@@ -15,9 +15,9 @@ import org.springframework.transaction.annotation.Transactional;
 public class RequestServiceImpl implements RequestService {
     @Autowired
     private HDBdao hdBdao;
+
     public void reqForExpert(SettleIn settleIn) {
         hdBdao.insert(settleIn);
-        return ;
     }
 
     public void reqForWithdraw(Payment payment) {
@@ -29,6 +29,6 @@ public class RequestServiceImpl implements RequestService {
     }
 
     public void modifyResource(ModifySciRes modifySciRes) {
-
+        hdBdao.update(modifySciRes);
     }
 }

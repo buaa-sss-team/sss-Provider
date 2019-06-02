@@ -31,11 +31,11 @@ public class FileServiceImpl implements FileService {
                 file.transferTo(new java.io.File(storePath+ java.io.File.separator+fileName));//把文件写入目标文件地址
             } catch (Exception e) {
                 e.printStackTrace();
-                return 0;
+                return 1;
             }
-            return 1;
+            return 0;
         }
-        return 0;
+        return 1;
     }
     //使用最新的Firefox、Chrome、Opera、Safari则都可以正常下载文件名为中文的文件了
     //没考虑文件名不存在或错误

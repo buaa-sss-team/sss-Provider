@@ -1,8 +1,9 @@
 package com.sss.provider.service;
 
 import com.sss.interfaces.ITestUserDao;
-import com.sss.interfaces.model.TestUser;
+import com.sss.interfaces.hmodel.User;
 import com.sss.interfaces.ITestUserService;
+import com.sss.provider.dao.HDBdao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -16,17 +17,14 @@ import java.util.List;
 public class TestUserService implements ITestUserService {
 
     @Autowired
-    private ITestUserDao ud;
+    private HDBdao hdBdao;
 
-    public TestUser getUser(int id){
-        return ud.getUser(id);
+    public User getUser(int id){
+        return (User) hdBdao.getByID(User.class,id);
     }
-    public List<TestUser> getAllUser(){
-        List<TestUser> list = ud.getAllUser();
-        return list;
-    }
-    public boolean addUser(TestUser user){
-        if (ud.addUser(user))
+
+    public boolean addUser(User user){
+        if (hdBdao.insert(user) == 0)
             return true;
         else return false;
     }

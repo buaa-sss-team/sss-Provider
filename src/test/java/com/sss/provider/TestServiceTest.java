@@ -1,12 +1,12 @@
 package com.sss.provider;
 
-
 import com.sss.interfaces.service.IAuthorization;
 import com.sss.provider.service.IAuthorizationImpl;
 import com.sss.provider.util.impl.TestService;
+import com.sss.provider.service.AuthorizationImpl;
 import com.sss.interfaces.ITestService;
 import com.sss.interfaces.MyReturnClass;
-import org.junit.Assert;
+import org.junit.Assert.*;
 import org.junit.Before;
 import org.junit.Test;
 import org.slf4j.Logger;
@@ -28,12 +28,14 @@ import org.slf4j.LoggerFactory;
 public class TestServiceTest {
     private ITestService testService;
     private IAuthorization iAuthorization;
+    private AuthorizationImpl authorization;
     private Logger logger= LoggerFactory.getLogger(TestServiceTest.class);
 
     @Before
     public void init(){
         testService=new TestService();
         iAuthorization=new IAuthorizationImpl();
+        authorization = new AuthorizationImpl();
     }
 
     /***
@@ -41,14 +43,14 @@ public class TestServiceTest {
      */
     @Test
     public void testSignin(){
-        logger.info(iAuthorization.userSignIn("springPig", "xixixixi")+"");
+        assertfa
+        logger.info(authorization.userSignIn("springPig", "xixixixi")+"");
     }
-
 
     @Test
     public void testLogin(){
-        logger.info(iAuthorization.userLogin("springPig", "mima")+"");
-        logger.info(iAuthorization.userLogin("springPig", "xixixixi")+"");
+        logger.info(authorization.userLogin("springPig", "mima")+"");
+        logger.info(authorization.userLogin("springPig", "xixixixi")+"");
     }
 
     /***
