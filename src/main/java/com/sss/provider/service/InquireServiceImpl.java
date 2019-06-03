@@ -6,6 +6,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import com.sss.interfaces.hmodel.*;
+
+import java.rmi.activation.ActivationID;
+
 @Service("InquireService")
 @Transactional
 public class InquireServiceImpl implements InquireService {
@@ -32,5 +35,9 @@ public class InquireServiceImpl implements InquireService {
 
     public Patent getPatentInfo(int id) {
         return (Patent) hdBdao.getByID(Patent.class,id);
+    }
+
+    public Action getActionInfo(int id) {
+        return (Action) hdBdao.getByID(Action.class,id);
     }
 }

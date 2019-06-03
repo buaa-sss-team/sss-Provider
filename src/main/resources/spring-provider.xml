@@ -62,5 +62,8 @@
     <dubbo:service interface="com.sss.interfaces.service.InquireService"
                    ref="InquireService"/>
 
+    <dubbo:service interface="com.sss.interfaces.service.CommonService"
+                   ref="CommonService"/>
+
     <dubbo:annotation package="com.sss.provider"/>
 </beans>
