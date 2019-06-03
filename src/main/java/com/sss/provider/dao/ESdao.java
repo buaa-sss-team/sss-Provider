@@ -77,7 +77,7 @@ public class ESdao {
         }
     }
 
-    private static boolean checkExistIndex(String indexName) throws IOException {
+    public static boolean checkExistIndex(String indexName) throws IOException {
         boolean result =true;
         try {
             OpenIndexRequest openIndexRequest = new OpenIndexRequest(indexName);
@@ -95,12 +95,18 @@ public class ESdao {
         return result;
     }
 
-    private static void deleteIndex(String indexName) throws IOException {
+    public static void deleteIndex(String indexName) throws IOException {
         DeleteIndexRequest request = new DeleteIndexRequest(indexName);
         client.indices().delete(request);
         System.out.println("删除了索引："+indexName);
     }
-    private static void createIndex(String indexName) throws IOException {
+
+    @Override
+    public int hashCode() {
+        return super.hashCode();
+    }
+
+    public static void createIndex(String indexName) throws IOException {
         // TODO Auto-generated method stub
         CreateIndexRequest request = new CreateIndexRequest(indexName);
         client.indices().create(request);

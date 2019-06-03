@@ -14,25 +14,31 @@ public class ESService implements IESService {
     public List<Map<String, Object>> FuzzyQueryAbstract(String name, String index,String info,int count) {
         if (count < 100) count = 100;
         try {
-            // TODO: 这里现在只有paper一个表更新了, 剩下的都还没对接上, 之后会写
-            ESdao.setIndexName("indexres");
+            name = name.toLowerCase()+"res";
+            ESdao.setIndexName(name);
             return ESdao.search("query", index, info, 0, count);
         } catch (Exception e) {
-            System.out.println("IO Exception happens" + e.getMessage());
+            System.out.println("IO Exception happens\n  " + e.getMessage());
             return null;
         }
     }
 
     // TODO: TEST-OK ; no use
+    // 在这里删索引啥的
     public static void main(String []args) {
         // TODO: 修改查询代码, 现在的查询可能不对
         ESService testService = new ESService();
-        List<Map<String, Object>> res = testService.FuzzyQueryAbstract("indexres","abstract","test",0);
-        if (res==null) {
+//        try{
+//            ESdao.deleteIndex("indexres");
+//        }catch (Exception e){
+//            System.out.println(e);
+//        }
+        List<Map<String, Object>> res = testService.FuzzyQueryAbstract("expert", "position", "posion", 0);
+        if (res == null) {
             System.out.println("数据获取失败");
             return;
         }
-        for (Map<String, Object> now:res) {
+        for (Map<String, Object> now : res) {
             System.out.println("found");
             System.out.println(now.toString());
         }
