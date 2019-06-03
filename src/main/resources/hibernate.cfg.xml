@@ -41,14 +41,14 @@
     <!--3. 加载所有映射 -->
 
 
-    <!-- <class-cache class="com.sss.interfaces.hmodel.User" usage="read-only"/> -->
-    <class-cache class="com.sss.interfaces.hmodel.Expert" usage="read-only"/>
-    <class-cache class="com.sss.interfaces.hmodel.Paper" usage="read-only"/>
-    <class-cache class="com.sss.interfaces.hmodel.Patent" usage="read-only"/>
-    <class-cache class="com.sss.interfaces.hmodel.Payment" usage="read-only"/>
-    <class-cache class="com.sss.interfaces.hmodel.Action" usage="read-only"/>
-    <class-cache class="com.sss.interfaces.hmodel.Buyres" usage="read-only"/>
-    <class-cache class="com.sss.interfaces.hmodel.Tobeexpert" usage="read-only"/>
-    <class-cache class="com.sss.interfaces.hmodel.Tradeinfo" usage="read-only"/>
+    <class-cache class="com.sss.interfaces.hmodel.User" usage="read-write"/>
+    <class-cache class="com.sss.interfaces.hmodel.Expert" usage="read-write"/>
+    <class-cache class="com.sss.interfaces.hmodel.Paper" usage="read-write"/>
+    <class-cache class="com.sss.interfaces.hmodel.Patent" usage="read-write"/>
+    <class-cache class="com.sss.interfaces.hmodel.Payment" usage="read-write"/>
+    <class-cache class="com.sss.interfaces.hmodel.Action" usage="read-write"/>
+    <class-cache class="com.sss.interfaces.hmodel.Buyres" usage="read-write"/>
+    <class-cache class="com.sss.interfaces.hmodel.Tobeexpert" usage="read-write"/>
+    <class-cache class="com.sss.interfaces.hmodel.Tradeinfo" usage="read-write"/>
   </session-factory>
 </hibernate-configuration>
