@@ -44,9 +44,9 @@ public class ESdao {
         //模糊匹配
         matchQueryBuilder.fuzziness(Fuzziness.AUTO);
         sourceBuilder.query(matchQueryBuilder);
-        //第几页
+        //确定要开始搜索的结果索引
         sourceBuilder.from(start);
-        //第几条
+        //返回的搜索匹配数
         sourceBuilder.size(count);
         searchRequest.source(sourceBuilder);
         searchRequest.types(type);
