@@ -67,6 +67,11 @@ public class CommonServiceImpl implements CommonService {
         return (Action) hdBdao.getByID(Action.class,id);
     }
 
+    public List<Tradeinfo> getTradeInfo(int id) {
+
+        return hdBdao.getTradeInfoByUserId(id);
+    }
+
     public int reqForExpert(Tobeexpert tobeexpert) {
         if (tobeexpert == null)
             return 1;
@@ -114,6 +119,5 @@ public class CommonServiceImpl implements CommonService {
             return 1;
         else return hdBdao.update(tradeinfo);
     }
-
 
 }
