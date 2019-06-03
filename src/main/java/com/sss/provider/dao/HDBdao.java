@@ -157,10 +157,8 @@ public class HDBdao implements IHDBdao{
             if(tx != null && tx.isActive())
                 tx.rollback();
         }
-        finally {
-            session.close();
-            return ret;
-        }
+        session.close();
+        return ret;
     }
 
     public List<Buyres> getBuyresBystatus(int st){
@@ -168,18 +166,34 @@ public class HDBdao implements IHDBdao{
         Transaction tx=session.beginTransaction();
         List<Buyres> ret=null;
         try{
-            //Query query=session.createQuery("FROM Buyres WHERE status=?");
-            //query.setParameter(0,st);
-            //ret=query.list();
+            Query query=session.createQuery("FROM Buyres WHERE getstatus=?");
+            query.setParameter(0,st);
+            ret=query.list();
         }
         catch(Exception e){
             e.printStackTrace();
             if(tx != null && tx.isActive())
                 tx.rollback();
         }
-        finally {
-            session.close();
-            return ret;
+        session.close();
+        return ret;
+    }
+
+    public List<Tradeinfo> getTradeInfoByUserId(int userid){
+        Session session=sessionFactory.openSession();
+        Transaction tx=session.beginTransaction();
+        List<Tradeinfo> ret=null;
+        try{
+            Query query=session.createQuery("FROM Tradeinfo WHERE userid=?");
+            query.setParameter(0,userid);
+            ret=query.list();
         }
+        catch(Exception e){
+            e.printStackTrace();
+            if(tx != null && tx.isActive())
+                tx.rollback();
+        }
+        session.close();
+        return ret;
     }
 }
