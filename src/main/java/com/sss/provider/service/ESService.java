@@ -73,8 +73,10 @@ public class ESService implements IESService {
         */
         List<Pair<String, List<Pair<String, Pair<String, String>>>>> limits = new LinkedList<Pair<String, List<Pair<String, Pair<String, String>>>>>();
         LinkedList<Pair<String, Pair<String, String>>> fir=new LinkedList<Pair<String, Pair<String, String>>>();
-        fir.add(new Pair("instruction",new Pair("matchQuery","sss")));
-        limits.add(new Pair("abstract",fir));
+//        fir.add(new Pair("search",new Pair("rangeQuery","sss")));
+//        limits.add(new Pair("abstract",fir));
+        fir.add(new Pair("lt",new Pair("rangeQuery","2005")));
+        limits.add(new Pair("year",fir));
         List<Map<String, Object>> res = testService.Query("paper",limits, 100);
         if (res == null) {
             System.out.println("数据获取失败");
@@ -83,5 +85,6 @@ public class ESService implements IESService {
         for (Map<String, Object> now : res) {
             System.out.println(now.toString());
         }
+        System.out.println("END!!!");
     }
 }

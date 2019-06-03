@@ -78,13 +78,13 @@ public class ESdao {
                 } else if (way.equals("fuzzyQuery")) {
                     QueryBuilder = new FuzzyQueryBuilder(name,value);
                 } else if (way.equals("rangeQuery")) {
-                    if (way.equals("gt"))
+                    if (value.equals("gt"))
                         QueryBuilder = new RangeQueryBuilder(name).gt(Integer.parseInt(fuzz));
-                    else if (way.equals("lt"))
+                    else if (value.equals("lt"))
                         QueryBuilder = new RangeQueryBuilder(name).lt(Integer.parseInt(fuzz));
-                    else if (way.equals("lte"))
+                    else if (value.equals("lte"))
                         QueryBuilder = new RangeQueryBuilder(name).lte(Integer.parseInt(fuzz));
-                    else if (way.equals("gte"))
+                    else if (value.equals("gte"))
                         QueryBuilder = new RangeQueryBuilder(name).gte(Integer.parseInt(fuzz));
                     else {
                         System.out.println("no! Query rangeQuery 失败");
