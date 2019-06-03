@@ -37,7 +37,7 @@ public class HDBdao implements IHDBdao{
         Transaction tx=session.beginTransaction();
         int ret=0;
         try {
-            session.saveOrUpdate(obj);
+            session.save(obj);
             tx.commit();
         }
         catch(Exception e){
