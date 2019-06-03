@@ -111,6 +111,7 @@ public class HDBdao implements IHDBdao{
             Query query=session.createQuery("FROM User WHERE account=?");
             ((Query) query).setParameter(0,name);
             List<User> tmp=query.list();
+            if(tmp.size()==0)return null;
             ret=tmp.get(0);
             tx.commit();
         }
