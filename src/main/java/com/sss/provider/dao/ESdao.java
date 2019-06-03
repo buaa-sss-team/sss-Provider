@@ -1,5 +1,7 @@
 package com.sss.provider.dao;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+import javafx.util.Pair;
 import org.apache.http.HttpHost;
 import org.elasticsearch.ElasticsearchStatusException;
 import org.elasticsearch.action.admin.indices.create.CreateIndexRequest;
@@ -12,16 +14,15 @@ import org.elasticsearch.action.search.SearchResponse;
 import org.elasticsearch.client.RestClient;
 import org.elasticsearch.client.RestHighLevelClient;
 import org.elasticsearch.common.unit.Fuzziness;
-import org.elasticsearch.index.query.MatchQueryBuilder;
+import org.elasticsearch.index.query.*;
 import org.elasticsearch.search.SearchHit;
 import org.elasticsearch.search.SearchHits;
 import org.elasticsearch.search.builder.SearchSourceBuilder;
 import org.elasticsearch.search.sort.*;
+import org.w3c.dom.ranges.Range;
 
 import java.io.IOException;
-import java.util.LinkedList;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
 public class ESdao {
     // 132.232.169.70:  服务器
@@ -60,6 +61,65 @@ public class ESdao {
         }
         return matchResult;
     }
+
+    public static List<Map<String, Object>> searchMultiple(String type, List<Pair<String,List<Pair<String,Pair<String,String>>>>> limits,
+                                                           int start, int count) throws IOException {
+        SearchRequest searchRequest = new SearchRequest(indexName);
+        SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
+        BoolQueryBuilder andBoolQueryBuilder = new BoolQueryBuilder();
+        for (Pair<String,List<Pair<String,Pair<String,String>>>> limit:limits){
+            BoolQueryBuilder orBoolQueryBuilder = new BoolQueryBuilder();
+            String name = limit.getKey();
+            for (Pair<String,Pair<String,String>> orVal:limit.getValue()) {
+                String value=orVal.getKey(),way=orVal.getValue().getKey(),fuzz=orVal.getValue().getValue();
+                QueryBuilder QueryBuilder;
+                if (way.equals("matchQuery")) {
+                    QueryBuilder = new MatchQueryBuilder(name,value);
+                } else if (way.equals("fuzzyQuery")) {
+                    QueryBuilder = new FuzzyQueryBuilder(name,value);
+                } else if (way.equals("rangeQuery")) {
+                    if (way.equals("gt"))
+                        QueryBuilder = new RangeQueryBuilder(name).gt(Integer.parseInt(fuzz));
+                    else if (way.equals("lt"))
+                        QueryBuilder = new RangeQueryBuilder(name).lt(Integer.parseInt(fuzz));
+                    else if (way.equals("lte"))
+                        QueryBuilder = new RangeQueryBuilder(name).lte(Integer.parseInt(fuzz));
+                    else if (way.equals("gte"))
+                        QueryBuilder = new RangeQueryBuilder(name).gte(Integer.parseInt(fuzz));
+                    else {
+                        System.out.println("no! Query rangeQuery 失败");
+                        continue;
+                    }
+                } else if (way.equals("termQuery")) {
+                    QueryBuilder=new TermQueryBuilder(name,value);
+                } else if (way.equals("wildcardQuery")){
+                    QueryBuilder=new WildcardQueryBuilder(name,value);
+                } else {
+                    System.out.println("no! Query way读取失败");
+                    continue;
+                }
+                orBoolQueryBuilder.should(QueryBuilder);
+            }
+            andBoolQueryBuilder.must(orBoolQueryBuilder);
+        }
+        sourceBuilder.query(andBoolQueryBuilder);
+        //确定要开始搜索的结果索引
+        sourceBuilder.from(start);
+        //返回的搜索匹配数
+        sourceBuilder.size(count);
+        searchRequest.source(sourceBuilder);
+        searchRequest.types(type);
+        //匹配度从高到低
+        sourceBuilder.sort(new ScoreSortBuilder().order(SortOrder.DESC));
+        SearchResponse searchResponse = client.search(searchRequest);
+        SearchHits hits = searchResponse.getHits();
+        List<Map<String, Object>> matchResult = new LinkedList<Map<String, Object>>();
+        for (SearchHit hit : hits.getHits()) {
+            matchResult.add(hit.getSourceAsMap());
+        }
+        return matchResult;
+    }
+
 
     // 获得指定type指定id的数据 json
     public static Map getDocument(String type, String id) throws IOException {
