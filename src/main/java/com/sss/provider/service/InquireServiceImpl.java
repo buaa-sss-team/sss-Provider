@@ -25,4 +25,12 @@ public class InquireServiceImpl implements InquireService {
 
         return(Expert) hdBdao.getByID(Expert.class, id );
     }
+
+    public Paper getPaperInfo(int id) {
+        return (Paper) hdBdao.getByID(Paper.class,id);
+    }
+
+    public Patent getPatentInfo(int id) {
+        return (Patent) hdBdao.getByID(Patent.class,id);
+    }
 }
