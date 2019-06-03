@@ -20,4 +20,9 @@ public class InquireServiceImpl implements InquireService {
 
         return hdBdao.getUserByName(name);
     }
+
+    public Expert getExperetInfo(int id) {
+
+        return(Expert) hdBdao.getByID(Expert.class, id );
+    }
 }
