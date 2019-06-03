@@ -13,6 +13,8 @@
             memoryStoreEvictionPolicy="LRU">
 
     </defaultCache>
+    <cache name="sampleCache1"/>
+
 
     <!-- Special objects setting. -->
     <!--

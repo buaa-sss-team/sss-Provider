@@ -41,7 +41,7 @@
     <!--3. 加载所有映射 -->
 
 
-    <class-cache class="com.sss.interfaces.hmodel.User" usage="read-only"/>
+    <!-- <class-cache class="com.sss.interfaces.hmodel.User" usage="read-only"/> -->
     <class-cache class="com.sss.interfaces.hmodel.Expert" usage="read-only"/>
     <class-cache class="com.sss.interfaces.hmodel.Paper" usage="read-only"/>
     <class-cache class="com.sss.interfaces.hmodel.Patent" usage="read-only"/>

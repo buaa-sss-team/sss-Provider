@@ -1,7 +1,12 @@
 package com.sss.provider.dao;
 
+import com.alibaba.dubbo.cache.CacheFactory;
+import com.alibaba.dubbo.common.URL;
+import com.alibaba.dubbo.rpc.Invocation;
 import com.sss.interfaces.dao.IHDBdao;
+import net.sf.ehcache.hibernate.EhcacheJtaTransactionManagerLookup;
 import org.hibernate.Query;
+import org.hibernate.cache.EhCacheProvider;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.Transaction;
 import org.hibernate.SessionFactory;
@@ -11,7 +16,8 @@ import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import java.util.List;
 import com.sss.interfaces.hmodel.*;
-
+import net.sf.ehcache.Cache;
+import net.sf.ehcache.CacheManager;
 @Service("HDBdao")
 public class HDBdao implements IHDBdao{
     private static Configuration config=null;
@@ -73,7 +79,17 @@ public class HDBdao implements IHDBdao{
         Transaction tx=session.beginTransaction();
         int ret=0;
         try {
+
+            //CacheManager cm=new CacheManager();
+            //cm.clearAll();
+            ;
             session.delete(obj);
+
+            //cm.getEhcache("sampleCache1");
+
+            //session.flush();
+            //obj=null;
+            //((User)obj).setId(-100);
             tx.commit();
         }
         catch(Exception e){
@@ -152,9 +168,9 @@ public class HDBdao implements IHDBdao{
         Transaction tx=session.beginTransaction();
         List<Buyres> ret=null;
         try{
-            Query query=session.createQuery("FROM Buyres WHERE status=?");
-            query.setParameter(0,st);
-            ret=query.list();
+            //Query query=session.createQuery("FROM Buyres WHERE status=?");
+            //query.setParameter(0,st);
+            //ret=query.list();
         }
         catch(Exception e){
             e.printStackTrace();
