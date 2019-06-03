@@ -27,18 +27,19 @@
     <property name="hibernate.format_sql">true</property>
     <!-- 2.3 自动建表 -->
     <property name="hibernate.hbm2ddl.auto">update</property>
-
-
-    <!--3. 加载所有映射 -->
-    <mapping class="com.sss.interfaces.hmodel.User"/>
+    <mapping class="com.sss.interfaces.hmodel.Action"/>
+    <mapping class="com.sss.interfaces.hmodel.Buyres"/>
     <mapping class="com.sss.interfaces.hmodel.Expert"/>
     <mapping class="com.sss.interfaces.hmodel.Paper"/>
     <mapping class="com.sss.interfaces.hmodel.Patent"/>
     <mapping class="com.sss.interfaces.hmodel.Payment"/>
-    <mapping class="com.sss.interfaces.hmodel.Action"/>
-    <mapping class="com.sss.interfaces.hmodel.Buyres"/>
     <mapping class="com.sss.interfaces.hmodel.Tobeexpert"/>
     <mapping class="com.sss.interfaces.hmodel.Tradeinfo"/>
+    <mapping class="com.sss.interfaces.hmodel.User"/>
+
+
+    <!--3. 加载所有映射 -->
+
 
     <class-cache class="com.sss.interfaces.hmodel.User" usage="read-only"/>
     <class-cache class="com.sss.interfaces.hmodel.Expert" usage="read-only"/>

@@ -1,10 +1,6 @@
 package com.sss.provider.dao;
 
 import com.sss.interfaces.dao.IHDBdao;
-import com.sss.interfaces.hmodel.Buyres;
-import com.sss.interfaces.hmodel.Payment;
-import com.sss.interfaces.hmodel.Tobeexpert;
-import com.sss.interfaces.hmodel.User;
 import org.hibernate.Query;
 import org.hibernate.cfg.Configuration;
 import org.hibernate.Transaction;
@@ -14,7 +10,7 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.stereotype.Service;
 import java.util.List;
-
+import com.sss.interfaces.hmodel.*;
 
 @Service("HDBdao")
 public class HDBdao implements IHDBdao{

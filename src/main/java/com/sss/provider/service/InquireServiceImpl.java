@@ -1,11 +1,11 @@
 package com.sss.provider.service;
 
-import com.sss.interfaces.hmodel.User;
 import com.sss.interfaces.service.InquireService;
 import com.sss.provider.dao.HDBdao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import com.sss.interfaces.hmodel.*;
 @Service("InquireService")
 @Transactional
 public class InquireServiceImpl implements InquireService {

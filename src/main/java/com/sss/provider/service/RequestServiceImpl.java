@@ -1,13 +1,11 @@
 package com.sss.provider.service;
 
-import com.sss.interfaces.hmodel.Buyres;
-import com.sss.interfaces.hmodel.Payment;
-import com.sss.interfaces.hmodel.Tobeexpert;
 import com.sss.interfaces.service.RequestService;
 import com.sss.provider.dao.HDBdao;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import com.sss.interfaces.hmodel.*;
 
 @Service("RequestService")
 @Transactional
