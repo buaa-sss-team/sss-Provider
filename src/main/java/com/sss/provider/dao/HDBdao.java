@@ -196,4 +196,22 @@ public class HDBdao implements IHDBdao{
         session.close();
         return ret;
     }
+
+    public List<Action> getActionByUserID(int userid){
+        Session session=sessionFactory.openSession();
+        Transaction tx=session.beginTransaction();
+        List<Action> ret=null;
+        try{
+            Query query=session.createQuery("FROM Action WHERE userid=?");
+            query.setParameter(0,userid);
+            ret=query.list();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            if(tx != null && tx.isActive())
+                tx.rollback();
+        }
+        session.close();
+        return ret;
+    }
 }
