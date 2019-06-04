@@ -106,6 +106,10 @@ public class CommonServiceImpl implements CommonService {
         return hdBdao.update(object);
     }
 
+    public int insert(Object object) {
+        return hdBdao.insert(object);
+    }
+
     public int updateExpertInfo(Expert expert){
         if (expert == null)
             return 1;
