@@ -120,4 +120,16 @@ public class CommonServiceImpl implements CommonService {
         else return hdBdao.update(tradeinfo);
     }
 
+    public List<Action> getActionByUserId(int id) {
+        return hdBdao.getActionByUserID(id);
+    }
+
+    public int addAction(Action action) {
+        if (action == null)
+            return 1;
+        else return hdBdao.insert(action);
+
+    }
+
+
 }
