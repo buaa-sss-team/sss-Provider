@@ -1,0 +1,36 @@
+Manifest-Version: 1.0
+Class-Path: antlr-2.7.6.jar elasticsearch-secure-sm-6.3.2.jar curator-
+ client-4.0.1.jar jackson-core-2.8.10.jar aspectjweaver-1.8.5.jar aopa
+ lliance-1.0.jar commons-dbcp-1.4.jar jackson-dataformat-yaml-2.8.10.j
+ ar commons-logging-1.2.jar spring-beans-4.1.6.RELEASE.jar elasticsear
+ ch-x-content-6.3.2.jar snakeyaml-1.17.jar hibernate-ehcache-3.6.10.Fi
+ nal.jar hibernate-commons-annotations-3.2.0.Final.jar joda-time-2.9.9
+ .jar spring-orm-4.1.6.RELEASE.jar lucene-memory-7.3.1.jar hamcrest-co
+ re-1.3.jar httpasyncclient-4.1.2.jar elasticsearch-6.3.2.jar jta-1.1.
+ jar commons-io-2.5.jar log4j-1.2.16.jar zkclient-0.1.jar log4j-api-2.
+ 9.1.jar jstl-1.2.jar curator-framework-4.0.1.jar lucene-join-7.3.1.ja
+ r lucene-queryparser-7.3.1.jar hibernate-jpa-2.0-api-1.0.0.Final.jar 
+ javassist-3.20.0-GA.jar elasticsearch-cli-6.3.2.jar spring-expression
+ -4.1.6.RELEASE.jar spring-context-4.1.6.RELEASE.jar httpcore-nio-4.4.
+ 5.jar zookeeper-3.4.11.jar mysql-connector-java-5.1.9.jar jline-0.9.9
+ 4.jar spring-web-4.1.6.RELEASE.jar netty-3.2.5.Final.jar rank-eval-cl
+ ient-6.3.2.jar jackson-dataformat-cbor-2.8.10.jar elasticsearch-core-
+ 6.3.2.jar lucene-misc-7.3.1.jar t-digest-3.2.jar spring-core-4.1.6.RE
+ LEASE.jar hsqldb-1.8.0.4.jar dom4j-1.6.1.jar elasticsearch-rest-high-
+ level-client-6.3.2.jar ehcache-core-2.4.3.jar spring-jdbc-4.1.6.RELEA
+ SE.jar standard-1.1.2.jar lucene-spatial-7.3.1.jar aggs-matrix-stats-
+ client-6.3.2.jar commons-collections-3.1.jar hibernate-testing-3.6.10
+ .Final.jar jna-4.5.1.jar guava-20.0.jar lucene-highlighter-7.3.1.jar 
+ netty-3.10.5.Final.jar jopt-simple-5.0.2.jar spring-aop-4.1.6.RELEASE
+ .jar lucene-spatial-extras-7.3.1.jar parent-join-client-6.3.2.jar jac
+ kson-dataformat-smile-2.8.10.jar hppc-0.7.1.jar HdrHistogram-2.1.9.ja
+ r junit-4.13-beta-3.jar lucene-backward-codecs-7.3.1.jar commons-code
+ c-1.10.jar lucene-suggest-7.3.1.jar spring-tx-4.1.6.RELEASE.jar hiber
+ nate-core-3.6.3.Final.jar httpcore-4.4.5.jar lucene-core-7.3.1.jar el
+ asticsearch-rest-client-6.3.2.jar lucene-queries-7.3.1.jar javassist-
+ 3.12.1.GA.jar httpclient-4.5.2.jar dubbo-2.6.1.jar lucene-grouping-7.
+ 3.1.jar slf4j-api-1.7.6.jar commons-pool-1.5.4.jar slf4j-log4j12-1.7.
+ 6.jar audience-annotations-0.5.0.jar lucene-sandbox-7.3.1.jar lucene-
+ analyzers-common-7.3.1.jar lucene-spatial3d-7.3.1.jar
+Main-Class: com.sss.provider.Launcher
+
