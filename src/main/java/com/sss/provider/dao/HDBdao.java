@@ -214,4 +214,45 @@ public class HDBdao implements IHDBdao{
         session.close();
         return ret;
     }
+
+    public Paper getPaperBySID(int sid){
+        Session session=sessionFactory.openSession();
+        Transaction tx=session.beginTransaction();
+        Paper ret=null;
+        try{
+            Query query=session.createQuery("FROM Paper WHERE sid=?");
+            query.setParameter(0,sid);
+
+            List<Paper> tmp=query.list();
+            if(tmp.size()==0)return null;
+            ret=tmp.get(0);
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            if(tx != null && tx.isActive())
+                tx.rollback();
+        }
+        session.close();
+        return ret;
+    }
+
+    public int insertPaper(Paper obj){
+        Session session=sessionFactory.getCurrentSession();
+        Transaction tx=session.beginTransaction();
+        int ret=-1;
+        Paper x=null;
+        try {
+
+            session.save(obj);
+            tx.commit();
+            if(obj!=null)
+            ret=obj.getId();
+        }
+        catch(Exception e){
+            e.printStackTrace();
+            if(tx != null && tx.isActive())
+                tx.rollback();
+        }
+        return ret;
+    }
 }
