@@ -47,22 +47,24 @@ public class ESService implements IESService {
     public List<Map<String, Object>> FuzzyQueryString(String name, String keyword, int count) {
         try {
             assert (indexNames.contains(name));
-            List<Pair<String,Integer>> L  = new LinkedList<Pair<String, Integer>>();
-            if (name.equals("expert")){
-                L.add(new Pair("name",10));
-                L.add(new Pair("orgs",9));
-                L.add(new Pair("publid",4));
-                L.add(new Pair("tags",4));
-            } else if (name.equals("paper")||name.equals("patent")) {
-                L.add(new Pair("title",10));
+            List<Pair<String, Integer>> L = new LinkedList<Pair<String, Integer>>();
+            name = name.toLowerCase();
+            if (name.equals("expert")) {
+                L.add(new Pair("name", 10));
+                L.add(new Pair("orgs", 9));
+                L.add(new Pair("publid", 4));
+                L.add(new Pair("tags", 4));
+            } else if (name.equals("paper") || name.equals("patent")) {
+                L.add(new Pair("title", 10));
                 L.add(new Pair("abstract",6));
             } else {
                 System.out.println("no! 表名错误");
                 return null;
             }
-            name = name.toLowerCase() + "res";
+            name = name + "res";
             ESdao.setIndexName(name);
-            return ESdao.searchTable("query", L,keyword,0, count);
+            System.out.println(name + L.toString() + keyword);
+            return ESdao.searchTable("query", L, keyword, 0, count);
         } catch (Exception e) {
             System.out.println("IO Exception happens\n  " + e.getMessage());
             return null;
@@ -109,7 +111,10 @@ public class ESService implements IESService {
 //        for (Map<String, Object> now : res) {
 //            System.out.println(now.toString());
 //        }
-        List<Map<String, Object>> res=testService.FuzzyQueryString("expert", "sss", 100);
+
+//        List<Map<String, Object>> res=testService.FuzzyQuery("paper", "title","School-Based Behavioral",100);
+//        List<Map<String, Object>> res=testService.FuzzyQueryString("paper", "School-Based Behavioral", 100);
+        List<Map<String, Object>> res=testService.FuzzyQueryString("paper", "School-Based Behavioral", 100);
         for (Map<String, Object> now : res) {
             System.out.println(now.toString());
         }

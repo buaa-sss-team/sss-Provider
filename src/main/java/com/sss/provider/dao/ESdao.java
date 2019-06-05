@@ -43,7 +43,8 @@ public class ESdao {
         //关键字匹配对应字段
         MatchQueryBuilder matchQueryBuilder = new MatchQueryBuilder(fieldName, keyword);
         //模糊匹配
-        matchQueryBuilder.fuzziness(Fuzziness.AUTO);
+        matchQueryBuilder=matchQueryBuilder.fuzziness(Fuzziness.AUTO);
+        matchQueryBuilder=matchQueryBuilder.analyzer("ik_max_word");
         sourceBuilder.query(matchQueryBuilder);
         //确定要开始搜索的结果索引
         sourceBuilder.from(start);
@@ -74,7 +75,7 @@ public class ESdao {
                 String value = orVal.getKey(), way = orVal.getValue().getKey(), fuzz = orVal.getValue().getValue();
                 QueryBuilder QueryBuilder;
                 if (way.equals("matchQuery")) {
-                    QueryBuilder = new MatchQueryBuilder(name, value);
+                    QueryBuilder = new MatchQueryBuilder(name, value).analyzer("ik_max_word").fuzziness(Fuzziness.AUTO);
                 } else if (way.equals("fuzzyQuery")) {
                     QueryBuilder = new FuzzyQueryBuilder(name, value);
                 } else if (way.equals("rangeQuery")) {
@@ -98,9 +99,9 @@ public class ESdao {
                     System.out.println("no! Query way读取失败");
                     continue;
                 }
-                orBoolQueryBuilder.should(QueryBuilder);
+                orBoolQueryBuilder = orBoolQueryBuilder.should(QueryBuilder);
             }
-            andBoolQueryBuilder.must(orBoolQueryBuilder);
+            andBoolQueryBuilder = andBoolQueryBuilder.must(orBoolQueryBuilder);
         }
         sourceBuilder.query(andBoolQueryBuilder);
         //确定要开始搜索的结果索引
@@ -124,12 +125,15 @@ public class ESdao {
                                                         String keyword, int start, int count) throws IOException {
         SearchRequest searchRequest = new SearchRequest(indexName);
         SearchSourceBuilder sourceBuilder = new SearchSourceBuilder();
-        BoolQueryBuilder andBoolQueryBuilder = new BoolQueryBuilder();
+        BoolQueryBuilder orBoolQueryBuilder = new BoolQueryBuilder();
         for (Pair<String, Integer> now : limits) {
-            FuzzyQueryBuilder fuzzyQueryBuilder = new FuzzyQueryBuilder(now.getKey(), keyword);
-            andBoolQueryBuilder.should(fuzzyQueryBuilder.boost(now.getValue()));
+            System.out.println(now.getKey()+keyword);
+            MatchQueryBuilder matchQueryBuilder = new MatchQueryBuilder(now.getKey(), keyword);
+            matchQueryBuilder=matchQueryBuilder.fuzziness(Fuzziness.AUTO);
+            matchQueryBuilder=matchQueryBuilder.analyzer("ik_max_word");
+            orBoolQueryBuilder=orBoolQueryBuilder.should(matchQueryBuilder.boost(now.getValue()));
         }
-        sourceBuilder.query(andBoolQueryBuilder);
+        sourceBuilder.query(orBoolQueryBuilder);
         //确定要开始搜索的结果索引
         sourceBuilder.from(start);
         //返回的搜索匹配数
