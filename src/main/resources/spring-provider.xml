@@ -47,7 +47,7 @@
 
     <dubbo:service interface="com.sss.interfaces.IESService"
                      registry="sss"
-                     timeout="3000"
+                     timeout="10000"
                      ref="ESService"/>
 
     <dubbo:service interface="com.sss.interfaces.service.FileService"
