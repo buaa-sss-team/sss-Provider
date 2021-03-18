@@ -20,7 +20,7 @@
         <mysqlVersion>5.1.9</mysqlVersion>
         <dubboVersion>2.6.1</dubboVersion>
         <zooVersion>3.4.11</zooVersion>
-        <ESversion>6.3.2</ESversion>
+        <ESversion>7.11.2</ESversion>
     </properties>
     <!-- **************************** /Properties 配置 **************************** -->
     <!-- TODO 在此处添加你需要的引用，如果可以的话尽量全部使用Maven管理lib -->
